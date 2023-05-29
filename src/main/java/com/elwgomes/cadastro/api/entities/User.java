@@ -1,18 +1,18 @@
 package com.elwgomes.cadastro.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Type;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 @Entity
 @Table(name = "tb_users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = "uuid")
+@EqualsAndHashCode(of = "id")
 @Builder
 public class User implements Serializable {
     private static final Long serialVersionUID = 1L;
@@ -28,8 +28,7 @@ public class User implements Serializable {
     private String lastname;
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     private Address address;
 
 }
