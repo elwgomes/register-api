@@ -52,13 +52,10 @@ public class UserService {
         user.setFirstname(obj.getFirstname());
         user.setLastname(obj.getLastname());
         user.setPassword(obj.getPassword());
-
-        if (!user.getCep().equals(obj.getCep())) {
-            user.setCep(obj.getCep());
-            viaCepService.fetchAddressFromViaCep(obj);
-            Address address = obj.getAddress();
-            address.setUser(obj);
-            obj.setAddress(address);
+        user.setCep(obj.getCep());
+        viaCepService.fetchAddressFromViaCep(user);
+        Address address = user.getAddress();
+        address.setUser(user);
+        user.setAddress(address);
         }
     }
-}
