@@ -2,28 +2,25 @@ package com.elwgomes.cadastro.api.dto;
 
 import com.elwgomes.cadastro.api.entities.Address;
 import com.elwgomes.cadastro.api.entities.User;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class AddressDTO {
+@NoArgsConstructor
+public class UserDTO {
 
+    private String username;
+    private String email;
+    private String firstname;
+    private String lastname;
+    private String password;
     private String cep;
-    private String logradouro;
-    private String complemento;
-    private String bairro;
-    private String localidade;
-    private String uf;
+    private Address address;
 
-    private UserDTO user;
-
-    public AddressDTO (Address entity) {
+    public UserDTO (User entity) {
         BeanUtils.copyProperties(entity, this);
     }
 

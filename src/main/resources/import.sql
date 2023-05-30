@@ -1,3 +1,3 @@
-INSERT INTO tb_users (username, email, password, firstname, lastname, cep) VALUES ('marygray', 'marygray@gmail.com', 'senha123', 'Mary', 'Gray', '57045300');
-INSERT INTO tb_users (username, email, password, firstname, lastname, cep) VALUES ('johnbrown', 'johnbrown@gmail.com', 'senha123', 'John', 'Brown', '01001000');
-INSERT INTO tb_users (username, email, password, firstname, lastname, cep) VALUES ('alexstrange', 'alexstrange@gmail.com', 'senha123', 'Alex', 'Strange', '57460000');
+-- INSERT INTO tb_users (username, email, password, firstname, lastname, cep) VALUES ('marygray', 'marygray@gmail.com', 'senha123', 'Mary', 'Gray', '57045300');
+-- INSERT INTO tb_users (username, email, password, firstname, lastname, cep) VALUES ('johnbrown', 'johnbrown@gmail.com', 'senha123', 'John', 'Brown', '01001000');
+-- INSERT INTO tb_users (username, email, password, firstname, lastname, cep) VALUES ('alexstrange', 'alexstrange@gmail.com', 'senha123', 'Alex', 'Strange', '57460000');

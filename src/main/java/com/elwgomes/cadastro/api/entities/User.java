@@ -14,6 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Builder
+@NamedEntityGraph(name = "User.address", attributeNodes = @NamedAttributeNode("address"))
 public class User implements Serializable {
     private static final Long serialVersionUID = 1L;
 
@@ -28,7 +29,7 @@ public class User implements Serializable {
     private String lastname;
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
     private Address address;
 
 }

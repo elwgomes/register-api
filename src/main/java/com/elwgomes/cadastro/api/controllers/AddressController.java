@@ -13,18 +13,18 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/v1/api")
+@RequestMapping("/address")
 public class AddressController {
 
     @Autowired
     private AddressRepository addressRepository;
 
-    @GetMapping("/address")
+    @GetMapping
     public ResponseEntity<List<Address>> findAll () throws Exception {
 	    return ResponseEntity.ok().body(addressRepository.findAll());
     }
 
-    @GetMapping("/address/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Optional> findById (@PathVariable("id")  Long id) {
         Optional obj = addressRepository.findById(id);
         return ResponseEntity.ok().body(obj);

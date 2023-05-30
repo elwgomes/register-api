@@ -1,6 +1,7 @@
 package com.elwgomes.cadastro.api.services;
 
 import com.elwgomes.cadastro.api.dto.AddressDTO;
+import com.elwgomes.cadastro.api.dto.UserDTO;
 import com.elwgomes.cadastro.api.entities.Address;
 import com.elwgomes.cadastro.api.entities.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
