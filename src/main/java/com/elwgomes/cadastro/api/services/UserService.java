@@ -4,6 +4,7 @@ import com.elwgomes.cadastro.api.entities.Address;
 import com.elwgomes.cadastro.api.entities.User;
 import com.elwgomes.cadastro.api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,10 +19,12 @@ public class UserService {
     @Autowired
     private ViaCepService viaCepService;
 
+    @Transactional(readOnly = true)
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     public User findById(Long id) {
         return userRepository.findById(id).get();
     }
@@ -41,21 +44,22 @@ public class UserService {
     }
 
     @Transactional
-    public User update(Long id, User obj) throws Exception {
-        User user = userRepository.getReferenceById(id);
-        updateData(user, obj);
+    public User updateUser(Long id, User updatedUser) throws Exception {
+        User user = userRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException());
+
+        // update data
+        user.setFirstname(updatedUser.getFirstname());
+        user.setLastname(updatedUser.getLastname());
+        user.setPassword(updatedUser.getPassword());
+
+        // check if cep was changed
+        if (!user.getCep().equals(updatedUser.getCep())) {
+            // Atualizar o CEP e obter o novo endereço
+            user.setCep(updatedUser.getCep());
+            viaCepService.fetchAddressFromViaCep(user);
+            userRepository.save(user);
+        }
+
         return userRepository.save(user);
     }
-
-    private void updateData(User user, User obj) throws Exception {
-        // data to be updated
-        user.setFirstname(obj.getFirstname());
-        user.setLastname(obj.getLastname());
-        user.setPassword(obj.getPassword());
-        user.setCep(obj.getCep());
-        viaCepService.fetchAddressFromViaCep(user);
-        Address address = user.getAddress();
-        address.setUser(user);
-        user.setAddress(address);
-        }
-    }
+}

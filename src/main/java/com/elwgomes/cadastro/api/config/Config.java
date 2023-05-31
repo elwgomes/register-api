@@ -41,7 +41,7 @@ public class Config implements CommandLineRunner {
         u2.setPassword("s3nh@");
 
         User u3 = new User();
-        u3.setUsername("Bruno");
+        u3.setUsername("brunodias");
         u3.setEmail("bruno@bruno.com");
         u3.setCep("57010368");
         u3.setFirstname("Bruno");

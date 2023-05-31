@@ -50,7 +50,7 @@ public class UserController{
     public ResponseEntity<User> updateData (@PathVariable Long id, @RequestBody User user) throws Exception {
         return ResponseEntity
                 .ok()
-                .body(user = userService.update(id, user));
+                .body(user = userService.updateUser(id, user));
     }
 
 }

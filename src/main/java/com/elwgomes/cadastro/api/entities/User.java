@@ -1,11 +1,10 @@
 package com.elwgomes.cadastro.api.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Entity
 @Table(name = "tb_users")
@@ -14,13 +13,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Builder
-@NamedEntityGraph(name = "User.address", attributeNodes = @NamedAttributeNode("address"))
 public class User implements Serializable {
     private static final Long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "BINARY(16)")
+    private UUID id;
 
     private String username;
     private String email;
@@ -29,7 +28,8 @@ public class User implements Serializable {
     private String lastname;
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
     private Address address;
 
 }

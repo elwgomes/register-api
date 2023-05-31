@@ -1,8 +1,6 @@
 package com.elwgomes.cadastro.api.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,8 +23,7 @@ public class Address {
     private String localidade;
     private String uf;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "address")
     @JsonIgnore
     private User user;
 
