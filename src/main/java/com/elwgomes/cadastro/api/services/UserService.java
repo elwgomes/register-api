@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -25,7 +26,7 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public User findById(Long id) {
+    public User findById(UUID id) {
         return userRepository.findById(id).get();
     }
 
@@ -39,22 +40,18 @@ public class UserService {
     }
 
     @Transactional
-    public void delete(Long id) {
+    public void delete(UUID id) {
         userRepository.deleteById(id);
     }
 
     @Transactional
-    public User updateUser(Long id, User updatedUser) throws Exception {
+    public User updateCep(UUID id, User updatedUser) throws Exception {
         User user = userRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException());
 
         // update data
-        user.setFirstname(updatedUser.getFirstname());
-        user.setLastname(updatedUser.getLastname());
-        user.setPassword(updatedUser.getPassword());
-
         // check if cep was changed
         if (!user.getCep().equals(updatedUser.getCep())) {
-            // Atualizar o CEP e obter o novo endereço
+            // update cep and get new address
             user.setCep(updatedUser.getCep());
             viaCepService.fetchAddressFromViaCep(user);
             userRepository.save(user);

@@ -2,6 +2,7 @@ package com.elwgomes.cadastro.api.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -18,7 +19,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(columnDefinition = "BINARY(16)")
+    @Column(name = "id", columnDefinition = "VARCHAR(36)")
     private UUID id;
 
     private String username;
