@@ -30,7 +30,7 @@ public class UserService {
         return userRepository.findById(id).get();
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public User insertUser(User user) throws Exception {
         viaCepService.fetchAddressFromViaCep(user);
         Address address = user.getAddress();

@@ -19,7 +19,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", columnDefinition = "VARCHAR(36)")
+    @Column(name = "id", columnDefinition = "BINARY(16)")
     private UUID id;
 
     private String username;

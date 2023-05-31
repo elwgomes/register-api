@@ -29,9 +29,7 @@ public class UserController{
 
     @GetMapping("/{id}")
     public ResponseEntity<User> findById (@PathVariable("id") UUID id) {
-        return ResponseEntity
-                .ok()
-                .body(userService.findById(id));
+        return ResponseEntity.ok().body(userService.findById(id));
     }
 
     @PostMapping
@@ -49,9 +47,7 @@ public class UserController{
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateData (@PathVariable("id") UUID id, @RequestBody User user) throws Exception {
-        return ResponseEntity
-                .ok()
-                .body(user = userService.updateCep(id, user));
+        return ResponseEntity.ok().body(user = userService.updateCep(id, user));
     }
 
 }

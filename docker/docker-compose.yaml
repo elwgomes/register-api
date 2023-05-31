@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  postgres:
+    container_name: postgres-docker
+    image: postgres:14
+    environment:
+      - POSTGRES_PASSWORD=1234567
+      - POSTGRES_DB=cadastro
+    ports:
+      - 5433:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    restart: always
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=me@email.com
+      - PGADMIN_DEFAULT_PASSWORD=1234567
+    ports:
+      - 15432:80
+    restart: always
+
