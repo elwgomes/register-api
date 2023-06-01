@@ -6,8 +6,10 @@ import com.elwgomes.cadastro.api.repositories.AddressRepository;
 import com.elwgomes.cadastro.api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AddressService {
@@ -15,11 +17,13 @@ public class AddressService {
     @Autowired
     private AddressRepository addressRepository;
 
+    @Transactional(readOnly = true)
     public List<Address> findAll () {
         return addressRepository.findAll();
     }
 
-    public Address findById (Long id) {
+    @Transactional(readOnly = true)
+    public Address findById (UUID id) {
         return addressRepository.findById(id).get();
     }
 }

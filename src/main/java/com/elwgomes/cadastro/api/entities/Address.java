@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "tb_address")
 @Data
@@ -14,8 +16,9 @@ import lombok.*;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @JsonIgnore
+    private UUID id;
 
     private String logradouro;
     private String complemento;

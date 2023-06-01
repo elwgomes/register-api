@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/address")
@@ -25,7 +26,7 @@ public class AddressController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional> findById (@PathVariable("id")  Long id) {
+    public ResponseEntity<Optional> findById (@PathVariable("id") UUID id) {
         Optional obj = addressRepository.findById(id);
         return ResponseEntity.ok().body(obj);
     }

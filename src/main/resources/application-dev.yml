@@ -1,10 +1,3 @@
-# GENERATE CREATE.SQL
-
-# spring.jpa.properties.jakarta.persistence.schema-generation.create-source=metadata
-# spring.jpa.properties.jakarta.persistence.schema-generation.scripts.action=create
-# spring.jpa.properties.jakarta.persistence.schema-generation.scripts.create-target=src/main/resources/create.sql
-# spring.jpa.properties.hibernate.hbm2ddl.delimiter=;
-
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/cadastro
@@ -18,5 +11,16 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
+
+# GENERATE CREATE.SQL
+#      jakarta:
+#        persistence:
+#          schema-generation:
+#            create-source: metadata
+#            scripts:
+#                action: create
+#                create-target: src/main/resources/create.sql
     hibernate:
       ddl-auto: none
+#      hbm2ddl:
+#        delimiter: ;
