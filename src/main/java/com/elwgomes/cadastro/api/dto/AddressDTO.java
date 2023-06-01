@@ -21,7 +21,7 @@ public class AddressDTO {
     private String localidade;
     private String uf;
 
-    private UserDTO user;
+    private User user;
 
     public AddressDTO (Address entity) {
         BeanUtils.copyProperties(entity, this);

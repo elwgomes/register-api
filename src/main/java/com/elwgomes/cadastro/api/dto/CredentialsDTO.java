@@ -10,13 +10,12 @@ import org.springframework.beans.BeanUtils;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO {
+public class CredentialsDTO {
 
     private String username;
     private String password;
-    private String token;
 
-    public UserDTO(User entity) {
+    public CredentialsDTO (User entity) {
         BeanUtils.copyProperties(entity, this);
     }
 

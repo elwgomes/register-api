@@ -37,8 +37,9 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String password;
 
+    private String token;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
-
 }
