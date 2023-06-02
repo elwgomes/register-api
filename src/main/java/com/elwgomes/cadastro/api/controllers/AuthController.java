@@ -35,16 +35,31 @@ public class AuthController {
                 && user.getUsername().equals(userDTO.getUsername())
                 && user.getPassword().equals(userDTO.getPassword())) {
             AuthToken authToken = TokenUtil.encodeToken(userDTO);
-            return ResponseEntity.ok(authToken);
+            return ResponseEntity
+                    .ok(authToken);
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .build();
     }
 
     @PostMapping("/register")
     public ResponseEntity<String> insertUser (@RequestBody User user) throws Exception {
+
+        if (userRepository.existsByUsername(user.getUsername())) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body("Username already exists");
+        } else if (userRepository.existsByEmail(user.getEmail())) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body("Email already registered.");
+        }
+
         userService.insertUser(user);
         String message = "New user added! \nUsername: " + user.getUsername() + "\nPassword: " + user.getPassword();
-        return ResponseEntity.ok(message);
+        return ResponseEntity
+                .ok(message);
     }
 
 }
