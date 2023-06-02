@@ -40,7 +40,7 @@ Isto retornará suas credenciais necessárias para fazer login e assim receber o
 
 *Obs.: O Token é válido por 10 minutos.*
 
-![Consulta de usuário](/screenshots/1-cadastro.png?raw=true "Consulta de usuário")
+![Consulta de usuário](/screenshots/register.png?raw=true "Consulta de usuário")
 
 
 ## Consulta de usuário
@@ -70,8 +70,8 @@ No header da requisição é necessário informar a key: `Authorization`
 E no value é necessário informar `Bearer {token}`
 Isso permitirá que sua requisição seja feita com sucesso.
 
-![Registro](/screenshots/2-consulta.png?raw=true "Registro")
-
+![Registro](/screenshots/getusers.png?raw=true "Registro")
+![Update](/screenshots/updatecep.png?raw=true "Registro")
 ## Login
 Caso não possua o token e já tenha feito o cadastro, é possível realizar o login através da seguinte URL:
 ##### Exemplo: #####
@@ -88,7 +88,7 @@ método: POST
 ```
 Isto retornará um JSON com o seu novo token que dará acesso ao sistema.
 
-![Login](/screenshots/3-login.png?raw=true "Login")
+![Login](/screenshots/login.png?raw=true "Login")
 
 **As mensagens de erro seguem o seguinte padrão:**
 ```json
