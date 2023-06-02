@@ -13,14 +13,14 @@ spring:
             non_contextual_creation: true
 
 # GENERATE CREATE.SQL
-#      jakarta:
-#        persistence:
-#          schema-generation:
-#            create-source: metadata
-#            scripts:
-#                action: create
-#                create-target: src/main/resources/create.sql
+      jakarta:
+        persistence:
+          schema-generation:
+            create-source: metadata
+            scripts:
+                action: create
+                create-target: src/main/resources/create.sql
     hibernate:
       ddl-auto: none
-#      hbm2ddl:
-#        delimiter: ;
+      hbm2ddl:
+        delimiter: ;
