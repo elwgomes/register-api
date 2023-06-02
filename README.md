@@ -11,6 +11,11 @@ Este é um aplicativo back-end que possui uma API RESTful, que também consome a
 - JWT
 - CI/CD - Railway integrado com o GitHub
 
+## Modelo de domínio
+
+![Domain model](/screenshots/domain-model.jpeg?raw=true "Domain model")
+
+
 Para rodar a aplicação basta fazer o clone dela e rodar o seguinte comando:
 ```
 mvn clean package spring-boot:run
